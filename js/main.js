@@ -6,7 +6,7 @@ var board = [
 ];
 
 
-var testArr = [0, 2, 2, 0];
+var testArr = [16, 16, 2, 2];
 
 
 //step 1. returns array of nonzeros
@@ -17,6 +17,23 @@ function reduceArr(arr) {
    return arr.filter(nonZeroFind);
 }
 
+//step 2. combines like values
+function combineNums(arr) {
+    var repeat = 0;
+    arr.forEach(function(num, idx) {
+     if (repeat === num) {
+         arr[idx-1] = num * 2;
+         arr.splice(idx, 1);
+         repeat = 0;
+     }
+     else {
+         repeat = num;
+     }
+    });
+    return arr;
+}
+
+
 //step 3. returns a 4-length array
 function fillArr(arr) {
     for ( arr.length;   arr.length < 4;) {
@@ -24,5 +41,5 @@ function fillArr(arr) {
     }
     return arr;
 }
-var modArray = fillArr(reduceArr(testArr));
+var modArray = fillArr(combineNums(reduceArr(testArr)));
 console.log(modArray);
