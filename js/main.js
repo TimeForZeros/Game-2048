@@ -7,9 +7,13 @@ const moves = {
         return boardArr;
     },
     right: function shiftRight(boardArr) {
-        boardArr.forEach(rightMove(arr));
-    } 
-}
+        boardArr.forEach(function (arr, idx)
+        { boardArr[idx] = rightMove(arr);
+            return  boardArr[idx];
+        });
+        return boardArr;
+    }
+    }
 
 
 var board = [
