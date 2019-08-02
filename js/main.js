@@ -12,15 +12,31 @@ const moves = {
             return  boardArr[idx];
         });
         return boardArr;
+    },
+    up: function shiftUp(boardArr) {
+        boardArr = colConverter(boardArr);
+        boardArr.forEach(function (arr, idx)
+        { boardArr[idx] = leftMove(arr);
+            return  boardArr[idx];
+        });
+        boardArr = colConverter(boardArr);
+        return boardArr;
+    },
+    down: function shiftDown(boardArr) {
+            boardArr = colConverter(boardArr);
+            boardArr.forEach(function (arr, idx)
+            { boardArr[idx] = rightMove(arr);
+                return  boardArr[idx];
+            });
+            boardArr = colConverter(boardArr);
+            return boardArr;
     }
-    //up: function shiftUp;
-    }
-
+}
 
 var board = [
     [0, 2, 2, 0],   //Row 1 idx 0
-    [0, 0, 0, 0],   //Row 2 idx 1
-    [2, 0, 4, 0],   //Row 3 idx 2
+    [0, 0, 2, 0],   //Row 2 idx 1
+    [0, 2, 4, 0],   //Row 3 idx 2
     [0, 0, 8, 8]    //Row 4 idx 3
 ];
 
@@ -75,7 +91,7 @@ function leftMove(arr) {
 }
 
 //move up
-//create column arrays
+//create column arrays converter
 function colConverter(arr) {
     var colOne =[], colTwo = [], colThree = [], colFour = [];
     var colArrays = [colOne, colTwo, colThree, colFour];
@@ -89,3 +105,5 @@ function colConverter(arr) {
 return colArrays;
     }
 //revert column array by performing this function again
+
+console.log(moves.down(board));
