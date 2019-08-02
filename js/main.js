@@ -13,6 +13,7 @@ const moves = {
         });
         return boardArr;
     }
+    //up: function shiftUp;
     }
 
 
@@ -74,13 +75,17 @@ function leftMove(arr) {
 }
 
 //move up
-function upMove(arr) {
+//create column arrays
+function colConverter(arr) {
     var colOne =[], colTwo = [], colThree = [], colFour = [];
+    var colArrays = [colOne, colTwo, colThree, colFour];
     arr.forEach(function(idxArr){
         colOne.push(idxArr[0]);
         colTwo.push(idxArr[1]);
         colThree.push(idxArr[2]);
         colFour.push(idxArr[3]);
-
+        return colArrays;
     });
-}
+return colArrays;
+    }
+//revert column array by performing this function again
