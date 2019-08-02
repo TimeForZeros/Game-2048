@@ -6,7 +6,7 @@ var board = [
 ];
 
 
-var testArr = [20, 20, 2, 2];
+var testArr = [24, 8, 4, 4]; //bug! 24 2 2 4
 
 
 //step 1. returns array of nonzeros
@@ -19,18 +19,21 @@ function reduceArr(arr) {
 
 //step 2. combines like values
 function combineNums(arr) {
-    var repeat = 0;
+  //Old function
+    /* var repeat = 0;
     arr.forEach(function(num, idx) {
      if (repeat === num) {
          arr[idx-1] = num * 2;
          arr.splice(idx, 1);
          repeat = 0;
-     }
-     else {
+     } 
+      else {
          repeat = num;
      }
     });
-    arr.forEach(function(num, idx) {
+    */
+   //Updated Function
+   /* arr.forEach(function(num, idx) {
         if (repeat === num) {
             arr[idx-1] = num * 2;
             arr.splice(idx, 1);
@@ -40,6 +43,18 @@ function combineNums(arr) {
             repeat = num;
         }
     });
+    */
+     arr.forEach(function(num, idx) {
+         if (arr[(idx+1)] == arr[idx]){
+             arr[idx] *= 2;
+             arr.splice((idx+1), 1);
+             return arr[idx];
+         } 
+         else {
+             return;
+         }
+     });
+    
     return arr;
 }
 
@@ -55,3 +70,4 @@ function fillArr(arr) {
 function leftMove(arr) { 
  return fillArr(combineNums(reduceArr(arr)));
 }
+console.log(leftMove(testArr));
