@@ -6,7 +6,7 @@ var board = [
 ];
 
 
-var testArr = [16, 16, 2, 2];
+var testArr = [20, 20, 2, 2];
 
 
 //step 1. returns array of nonzeros
@@ -30,6 +30,16 @@ function combineNums(arr) {
          repeat = num;
      }
     });
+    arr.forEach(function(num, idx) {
+        if (repeat === num) {
+            arr[idx-1] = num * 2;
+            arr.splice(idx, 1);
+            repeat = 0;
+        }
+        else {
+            repeat = num;
+        }
+    });
     return arr;
 }
 
@@ -41,5 +51,7 @@ function fillArr(arr) {
     }
     return arr;
 }
-var modArray = fillArr(combineNums(reduceArr(testArr)));
-console.log(modArray);
+
+function leftMove(arr) { 
+ return fillArr(combineNums(reduceArr(arr)));
+}
