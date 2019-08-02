@@ -1,8 +1,22 @@
+const moves = {
+    left: function shiftLeft(boardArr) {
+        boardArr.forEach(function (arr, idx)
+        { boardArr[idx] = leftMove(arr);
+            return  boardArr[idx];
+        });
+        return boardArr;
+    },
+    right: function shiftRight(boardArr) {
+        boardArr.forEach(rightMove(arr));
+    } 
+}
+
+
 var board = [
-    [0, 0, 0, 0],   //Row 1 idx 0
+    [0, 2, 2, 0],   //Row 1 idx 0
     [0, 0, 0, 0],   //Row 2 idx 1
-    [0, 0, 0, 0],   //Row 3 idx 2
-    [0, 0, 0, 0]    //Row 4 idx 3
+    [2, 0, 4, 0],   //Row 3 idx 2
+    [0, 0, 8, 8]    //Row 4 idx 3
 ];
 
 
@@ -19,31 +33,6 @@ function reduceArr(arr) {
 
 //step 2. combines like values
 function combineNums(arr) {
-  //Old function
-    /* var repeat = 0;
-    arr.forEach(function(num, idx) {
-     if (repeat === num) {
-         arr[idx-1] = num * 2;
-         arr.splice(idx, 1);
-         repeat = 0;
-     } 
-      else {
-         repeat = num;
-     }
-    });
-    */
-   //Updated Function
-   /* arr.forEach(function(num, idx) {
-        if (repeat === num) {
-            arr[idx-1] = num * 2;
-            arr.splice(idx, 1);
-            repeat = 0;
-        }
-        else {
-            repeat = num;
-        }
-    });
-    */
      arr.forEach(function(num, idx) {
          if (arr[(idx+1)] == arr[idx]){
              arr[idx] *= 2;
@@ -79,5 +68,8 @@ function rightMove(arr) {
 function leftMove(arr) { 
  return fillArr(combineNums(reduceArr(arr)));
 }
-console.log(leftMove(testArr));
-console.log(rightMove(testArr));
+
+// console.log(leftMove(testArr));
+// console.log(rightMove(testArr));
+
+console.log(moves.left(board));
