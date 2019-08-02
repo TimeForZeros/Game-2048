@@ -73,7 +73,14 @@ function leftMove(arr) {
  return fillArr(combineNums(reduceArr(arr)));
 }
 
-// console.log(leftMove(testArr));
-// console.log(rightMove(testArr));
+//move up
+function upMove(arr) {
+    var colOne =[], colTwo = [], colThree = [], colFour = [];
+    arr.forEach(function(idxArr){
+        colOne.push(idxArr[0]);
+        colTwo.push(idxArr[1]);
+        colThree.push(idxArr[2]);
+        colFour.push(idxArr[3]);
 
-console.log(moves.left(board));
+    });
+}
