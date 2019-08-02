@@ -34,15 +34,11 @@ const moves = {
 }
 
 var board = [
-    [0, 2, 2, 0],   //Row 1 idx 0
-    [0, 0, 2, 0],   //Row 2 idx 1
-    [0, 2, 4, 0],   //Row 3 idx 2
-    [0, 0, 8, 8]    //Row 4 idx 3
+    [0, 0, 0, 0],   //Row 1 idx 0
+    [0, 0, 0, 0],   //Row 2 idx 1
+    [0, 0, 0, 0],   //Row 3 idx 2
+    [0, 0, 0, 0]    //Row 4 idx 3
 ];
-
-
-var testArr = [2, 2, 2, 4]; //bug! 24 2 2 4
-
 
 //step 1. returns array of nonzeros
 function reduceArr(arr) {
