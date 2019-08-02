@@ -6,7 +6,7 @@ var board = [
 ];
 
 
-var testArr = [24, 8, 4, 4]; //bug! 24 2 2 4
+var testArr = [2, 2, 2, 4]; //bug! 24 2 2 4
 
 
 //step 1. returns array of nonzeros
@@ -67,7 +67,17 @@ function fillArr(arr) {
     return arr;
 }
 
+//alt step (right shift)
+function rightMove(arr) {
+    var flip = fillArr(combineNums(reduceArr(arr.reverse())));
+    return flip.reverse();
+}
+
+
+
+//Moves
 function leftMove(arr) { 
  return fillArr(combineNums(reduceArr(arr)));
 }
 console.log(leftMove(testArr));
+console.log(rightMove(testArr));
