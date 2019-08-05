@@ -103,3 +103,45 @@ return colArrays;
 //revert column array by performing this function again
 
 //console.log(moves.down(board));
+
+function init() {
+    
+}
+
+
+
+
+//creating the render function
+
+function render () {
+    //function that goes through the board array rows
+    board.forEach(function(colArr, rowIdx) {
+        //function that goes through the column index of the row arrays
+        colArr.forEach(function(cell, colIdx){
+            let tile = document.getElementById(`c${colIdx}r${rowIdx}`);
+            
+            
+            
+        });
+    });
+}
+
+
+
+//document.querySelector('.grid').addEventListener('click', handleClick);
+
+function spawnInit () {
+    render();
+    function startAssign() {
+        do {
+      let numOne = document.get `c${randomNum()}r${randomNum()}`;
+      let numTwo =`c${randomNum()}r${randomNum()}`;}
+      while (numOne !== numTwo){
+      numOne.style.backgroundColor = 'black';
+      numtwo.style.backgroundColor = 'black';
+      }
+}
+
+function randomNum() {
+return (Math.ceil(Math.random() * 4) - 1);
+}
