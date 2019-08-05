@@ -2,22 +2,32 @@ body {
     height: 100vh;
     display: grid;
     grid-template-columns: 2fr 5fr 3fr;
+    font-family: 'PT Mono', monospace;
+    grid-template-rows: 2fr 6fr 2fr;
+    background-color: lightgray;
+    min-width: 900px;
 
 }
 .main {
     grid-column: 2;
     display: grid;
     grid-template-columns: 2fr 4fr 2fr;
-    grid-template-rows: 2fr 6fr 2fr;
 }
 h2 {
      grid-column: 2;
      grid-row: 1;
      text-align: center;
      font-size: 60px;
-     font-family: 'PT Mono', monospace;
 
      
+}
+h3 {
+    grid-row: 1;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    justify-content: center;
 }
 .grid {
     padding: 5%;
@@ -31,8 +41,32 @@ h2 {
 
 .rules {
     grid-column: 1;
+
 }
 
 .score {
     grid-column: 3;
+
+}
+
+#rules {
+    background-color: white;
+    padding: 15px;
+    border-radius: 25px;
+    margin: -20px 0 0 10px;
+}
+#score {
+    display: flex;
+    background-color: white;
+    height: 5vh;
+    width: 200px;
+    border-radius: 25px;
+    padding: 15px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: -20px;
+}
+.score-container {
+    display: flex;
+    justify-content: center;
 }

@@ -102,4 +102,4 @@ return colArrays;
     }
 //revert column array by performing this function again
 
-console.log(moves.down(board));
+//console.log(moves.down(board));
