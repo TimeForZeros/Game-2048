@@ -120,6 +120,8 @@ return colArrays;
 //console.log(moves.down(board));
 
 function init() {
+    render();
+    spawnInit();
     
 }
 
@@ -135,7 +137,7 @@ function render () {
         colArr.forEach(function(cell, colIdx){
             let tile = document.getElementById(`c${colIdx}r${rowIdx}`);
             tile.style.backgroundColor = colors[cell.toString()];
-
+            
         });
     });
 }
@@ -144,40 +146,49 @@ function render () {
 
 //document.querySelector('.grid').addEventListener('click', handleClick);
 
-function spawnInit () {
-    let colOne = randomNum();
-    let rowOne = randomNum();
-
-
-      let numOne = document.getElementById(`c${randomNum()}r${randomNum()}`);
-      let numTwo = document.getElementById(`c${randomNum()}r${randomNum()}`);
-    if (numOne !== numTwo)
-    {
-        numOne.style.backgroundColor = colors['2'];
-        numTwo.style.backgroundColor = colors['2'];
-    }
-    else {
-        spawnInit();
-    }
-     
-    return 
-
-
-}
-
-
 function randomNum() {
     return (Math.ceil(Math.random() * 4) - 1);
 }
 render();
-spawnInit();
 
 function renderUpdate() {
-let col = randomNum();
-let row = randomNum();
-board[col][row] = 2;
-console.log(board);
-}
-//random assigner update
+    let col = randomNum();
+    let row = randomNum();
+    let updateNum = null;
+    let tileUpdate = document.getElementById(`c${col}r${row}`);
 
-renderUpdate();
+    if (board[col][row] === 0){
+    board[col][row]
+    if (randomNum() > 2){
+        board[col][row] = 4;
+    }
+    else {
+        board[col][row] = 2;
+    }
+    }
+    else {
+    renderUpdate();
+    }
+    updateNum = board[col][row];
+    return tileUpdate.style.backgroundColor = colors[updateNum.toString()];
+}
+
+function spawnInit () {
+    for (var i = 0; i < 2;) {
+        let col = randomNum();
+        let row = randomNum();
+        let updateNum = null;
+        let tileUpdate = document.getElementById(`c${col}r${row}`);
+    if (board[col][row] === 0){
+        board[col][row] = 2;
+        updateNum = board[col][row];
+        i++;
+        tileUpdate.style.backgroundColor = colors[updateNum.toString()];
+        }
+    else {
+        return ;
+        }
+    }
+}
+
+init();
