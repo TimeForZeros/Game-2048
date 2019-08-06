@@ -197,6 +197,7 @@ document.onkeydown = function(e) {
         case 37: //left
         {      
         render(moves.left(board));
+        renderUpdate(board);
         console.log(board);
     }
     break;
@@ -204,12 +205,14 @@ document.onkeydown = function(e) {
     {
         let tempArray = render(moves.up(board));  
         board = tempArray;      
+        renderUpdate(board);
         console.log(board);
     }
     break;
     case 39: //right
     {
     render(moves.right(board));
+    renderUpdate(board);
         console.log(board);
     }
     break;
@@ -217,6 +220,7 @@ document.onkeydown = function(e) {
     {
         let tempArray = render(moves.down(board));  
         board = tempArray;
+        renderUpdate(board);
         console.log(board);
 
 
