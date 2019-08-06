@@ -5,9 +5,10 @@ body {
     grid-template-columns: 2fr 2fr 5fr 3fr 2fr;
     font-family: 'PT Mono', monospace;
     grid-template-rows: 95vh 40px;
-    background-color: lightgray;
+    background-color: rgb(199, 223, 247);
     min-width: 900px;
     grid-gap: 15px;
+    color: rgb(14, 46, 78);
 
 }
 .main {
@@ -47,7 +48,7 @@ h3 {
 }
 
 .grid div{
-    border: 5px solid lightgray;
+    border: 5px solid rgb(199, 223, 247);
     border-radius: 20px;
 }
 
@@ -79,18 +80,18 @@ h3 {
 }
 .d-pad div {
     border-radius: 15px;
-    background-color: white;
+    background-color: rgb(239, 244, 250);
 }
 
 #rules {
-    background-color: white;
+    background-color: rgb(239, 244, 250);
     padding: 15px;
     border-radius: 25px;
     margin-top: -20px;
 }
 #score {
     display: flex;
-    background-color: white;
+    background-color: rgb(239, 244, 250);
     height: 25px;
     width: 240px;
     border-radius: 25px;
@@ -107,7 +108,7 @@ h3 {
 footer {
     grid-row: 2;
     grid-column: 1 / 6;
-    background-color: gray;
+    background-color: rgb(57, 76, 100);
     
 } 
 footer #copyright {
