@@ -145,6 +145,10 @@ function render () {
 //document.querySelector('.grid').addEventListener('click', handleClick);
 
 function spawnInit () {
+    let colOne = randomNum();
+    let rowOne = randomNum();
+
+
       let numOne = document.getElementById(`c${randomNum()}r${randomNum()}`);
       let numTwo = document.getElementById(`c${randomNum()}r${randomNum()}`);
     if (numOne !== numTwo)
@@ -168,4 +172,12 @@ function randomNum() {
 render();
 spawnInit();
 
+function renderUpdate() {
+let col = randomNum();
+let row = randomNum();
+board[col][row] = 2;
+console.log(board);
+}
 //random assigner update
+
+renderUpdate();
