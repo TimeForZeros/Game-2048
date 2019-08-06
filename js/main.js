@@ -101,7 +101,6 @@ function leftMove(arr) {
  return fillArr(combineNums(reduceArr(arr)));
 }
 
-//move up
 //create column arrays converter
 function colConverter(arr) {
     var colOne =[], colTwo = [], colThree = [], colFour = [];
@@ -191,4 +190,8 @@ function spawnInit () {
     }
 }
 
-init();
+
+//event handler
+//move maps
+/* when button clicked, move.direction,
+ render,color the dpad */
