@@ -1,3 +1,18 @@
+const colors = {
+    '0'   : 'white',
+    '2'   : 'RGBA(0, 0, 0, 0.1)',
+    '4'   : 'RGBA(0, 0, 0, 0.2)',
+    '8'   : 'RGBA(0, 0, 0, 0.3)',
+    '16'  : 'RGBA(0, 0, 0, 0.4)',
+    '32'  : 'RGBA(0, 0, 0, 0.5)',
+    '64'  : 'RGBA(0, 0, 0, 0.6)',
+    '128' : 'RGBA(0, 0, 0, 0.7)',
+    '256' : 'RGBA(0, 0, 0, 0.8)',
+    '512' : 'RGBA(0, 0, 0, 0.9)',
+    '1024': 'RGBA(0, 0, 0, 1.0)',
+    '2048': 'RGBA(255, 0, 0, 1)'
+}
+
 const moves = {
     left: function shiftLeft(boardArr) {
         boardArr.forEach(function (arr, idx)
@@ -119,9 +134,8 @@ function render () {
         //function that goes through the column index of the row arrays
         colArr.forEach(function(cell, colIdx){
             let tile = document.getElementById(`c${colIdx}r${rowIdx}`);
-            
-            
-            
+            tile.style.backgroundColor = colors[cell.toString()];
+
         });
     });
 }
@@ -131,17 +145,27 @@ function render () {
 //document.querySelector('.grid').addEventListener('click', handleClick);
 
 function spawnInit () {
-    render();
-    function startAssign() {
-        do {
-      let numOne = document.get `c${randomNum()}r${randomNum()}`;
-      let numTwo =`c${randomNum()}r${randomNum()}`;}
-      while (numOne !== numTwo){
-      numOne.style.backgroundColor = 'black';
-      numtwo.style.backgroundColor = 'black';
-      }
+      let numOne = document.getElementById(`c${randomNum()}r${randomNum()}`);
+      let numTwo = document.getElementById(`c${randomNum()}r${randomNum()}`);
+    if (numOne !== numTwo)
+    {
+        numOne.style.backgroundColor = colors['2'];
+        numTwo.style.backgroundColor = colors['2'];
+    }
+    else {
+        spawnInit();
+    }
+     
+    return 
+
+
 }
 
+
 function randomNum() {
-return (Math.ceil(Math.random() * 4) - 1);
+    return (Math.ceil(Math.random() * 4) - 1);
 }
+render();
+spawnInit();
+
+//random assigner update
