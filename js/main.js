@@ -4,7 +4,7 @@ const colors = {
     '4'   : 'RGBA(0, 25, 50, 0.2)',
     '8'   : 'RGBA(0, 50, 50, 0.3)',
     '16'  : 'RGBA(0, 50, 100, 0.4)',
-    '32'  : 'RGBA(0, 0, 0, 0.5)',
+    '32'  : 'RGBA(0, 50, 150, 0.5)',
     '64'  : 'RGBA(0, 0, 0, 0.6)',
     '128' : 'RGBA(0, 0, 0, 0.7)',
     '256' : 'RGBA(0, 0, 0, 0.8)',
@@ -37,14 +37,6 @@ const moves = {
             boardArr = colConverter(boardArr);
             return boardArr;
 
-
-        // boardArr = colConverter(boardArr);
-        // boardArr.forEach(function (arr, idx)
-        // { boardArr[idx] = leftMove(arr);
-        //     return  boardArr[idx];
-        // });
-        // boardArr = colConverter(boardArr);
-        return boardArr;
     },
     down: function shiftDown(boardArr) {
             boardArr = colConverter(boardArr);
@@ -129,27 +121,9 @@ return transposedArr;
 }
 
 
-//create column arrays converter
-// function colConverter(arr) {
-//     var colOne =[], colTwo = [], colThree = [], colFour = [];
-//     var colArrays = [colOne, colTwo, colThree, colFour];
-//     arr.forEach(function(idxArr){
-//         colOne.push(idxArr[0]);
-//         colTwo.push(idxArr[1]);
-//         colThree.push(idxArr[2]);
-//         colFour.push(idxArr[3]);
-//         return colArrays;
-//     });
-// return colArrays;
-//     }
-//revert column array by performing this function again
-
-//console.log(moves.down(board));
-
 function init() {
     render(board);
     spawnInit(board);
-    console.log(board);
 }
 
 
@@ -157,9 +131,9 @@ function init() {
 
 //creating the render function
 
-function render(board) {
+function render(arr) {
     //function that goes through the board array rows
-    board.forEach(function(colArr, rowIdx) {
+    arr.forEach(function(colArr, rowIdx) {
         //function that goes through the column index of the row arrays
         colArr.forEach(function(cell, colIdx){
             let tile = document.getElementById(`c${colIdx}r${rowIdx}`);
@@ -167,7 +141,7 @@ function render(board) {
             
         });
     });
-    return board;
+    return arr;
 }
 
 
@@ -177,7 +151,6 @@ function render(board) {
 function randomNum() {
     return (Math.ceil(Math.random() * 4) - 1);
 }
-render(board);
 
 function renderUpdate() {
     let col = randomNum();
@@ -201,7 +174,7 @@ function renderUpdate() {
     return tileUpdate.style.backgroundColor = colors[updateNum.toString()];
 }
 
-function spawnInit (board) {
+function spawnInit (arr) {
     for (var i = 0; i < 2;) {
         let col = randomNum();
         let row = randomNum();
@@ -213,40 +186,43 @@ function spawnInit (board) {
         i++;
         tileUpdate.style.backgroundColor = colors[updateNum.toString()];
         }
-    else {
-        return ;
-        }
     }
+    return arr;
 }
 
 
 document.onkeydown = function(e) {
+
     switch (e.keyCode) {
         case 37: //left
         {      
-         return   renderUpdate(render(moves.left(board)));
-            console.log(board);
-        }
-        break;
-        case 38: //up
-        {
-          return  renderUpdate(render(moves.up(board)));        }
-        break;
-        case 39: //right
-        {
-          return  renderUpdate(render(moves.right(board)));
-        }
-        break;
-        case 40: //down
-        {
-            return renderUpdate(render(moves.down(board)));
-        }
+        render(moves.left(board));
+        console.log(board);
+    }
+    break;
+    case 38: //up
+    {
+        let tempArray = render(moves.up(board));  
+        board = tempArray;      
+        console.log(board);
+    }
+    break;
+    case 39: //right
+    {
+    render(moves.right(board));
+        console.log(board);
+    }
+    break;
+    case 40: //down
+    {
+        let tempArray = render(moves.down(board));  
+        board = tempArray;
+        console.log(board);
+
+
+    }
             break;
     }
 };
 
 init();
-//event handler
-//move maps
-/* when button clicked, move.direction,
- render,color the dpad */
