@@ -191,6 +191,40 @@ function spawnInit () {
 }
 
 
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37: //left
+        {
+            moves.left(board);
+            renderUpdate();
+            render();
+        }
+            break;
+        case 38: //up
+        {
+            moves.up(board);
+            renderUpdate();
+            render();
+        }
+            break;
+        case 39: //right
+        {
+            moves.right(board);
+            renderUpdate();
+            render();
+        }
+            break;
+        case 40: //down
+        {
+            moves.down(board);
+            renderUpdate();
+            render();
+        }
+            break;
+    }
+};
+
+init();
 //event handler
 //move maps
 /* when button clicked, move.direction,
