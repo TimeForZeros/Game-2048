@@ -121,7 +121,7 @@ return colArrays;
 function init() {
     render();
     spawnInit();
-    
+    console.log(board);
 }
 
 
@@ -156,19 +156,19 @@ function renderUpdate() {
     let updateNum = null;
     let tileUpdate = document.getElementById(`c${col}r${row}`);
 
-    if (board[col][row] === 0){
-    board[col][row]
+    if (board[row][col] === 0){
+    board[row][col]
     if (randomNum() > 2){
-        board[col][row] = 4;
+        board[row][col] = 4;
     }
     else {
-        board[col][row] = 2;
+        board[row][col] = 2;
     }
     }
     else {
     renderUpdate();
     }
-    updateNum = board[col][row];
+    updateNum = board[row][col];
     return tileUpdate.style.backgroundColor = colors[updateNum.toString()];
 }
 
@@ -178,9 +178,9 @@ function spawnInit () {
         let row = randomNum();
         let updateNum = null;
         let tileUpdate = document.getElementById(`c${col}r${row}`);
-    if (board[col][row] === 0){
-        board[col][row] = 2;
-        updateNum = board[col][row];
+    if (board[row][col] === 0){
+        board[row][col] = 2;
+        updateNum = board[row][col];
         i++;
         tileUpdate.style.backgroundColor = colors[updateNum.toString()];
         }
@@ -198,27 +198,31 @@ document.onkeydown = function(e) {
             moves.left(board);
             renderUpdate();
             render();
+            console.log(board);
         }
-            break;
+        break;
         case 38: //up
         {
             moves.up(board);
             renderUpdate();
             render();
+            console.log(board);
         }
-            break;
+        break;
         case 39: //right
         {
             moves.right(board);
             renderUpdate();
             render();
+            console.log(board);
         }
-            break;
+        break;
         case 40: //down
         {
             moves.down(board);
             renderUpdate();
             render();
+            console.log(board);
         }
             break;
     }
