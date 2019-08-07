@@ -192,7 +192,7 @@ function spawnInit (arr) {
 
 
 document.onkeydown = function(e) {
-
+    const sentryArray = Array.from(board);
     switch (e.keyCode) {
         case 37: //left
         {      
@@ -203,10 +203,8 @@ document.onkeydown = function(e) {
         break;
         case 38: //up
         {   
-            const sentryArray = Array.from(board);
-            console.log(sentryArray);
             let tempArray = render(moves.up(board));  
-            board = tempArray; 
+            board = Array.from(tempArray); 
             if (sentryArray !== board) {
                 renderUpdate(board);
             }
@@ -235,3 +233,6 @@ document.onkeydown = function(e) {
 };
 
 init();
+//I doubt you'll ever see this, but you're one of the most important people in my life and I care about you soo much, Kendira!
+
+console.log('Kendira is a butt!');
