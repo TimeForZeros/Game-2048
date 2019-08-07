@@ -199,34 +199,38 @@ document.onkeydown = function(e) {
         render(moves.left(board));
         renderUpdate(board);
         console.log(board);
-    }
-    break;
-    case 38: //up
-    {
-        let tempArray = render(moves.up(board));  
-        board = tempArray;      
+        }
+        break;
+        case 38: //up
+        {   
+            const sentryArray = Array.from(board);
+            console.log(sentryArray);
+            let tempArray = render(moves.up(board));  
+            board = tempArray; 
+            if (sentryArray !== board) {
+                renderUpdate(board);
+            }
+            else return;
+        }
+        break;
+        case 39: //right
+        {
+        render(moves.right(board));
         renderUpdate(board);
-        console.log(board);
-    }
-    break;
-    case 39: //right
-    {
-    render(moves.right(board));
-    renderUpdate(board);
-        console.log(board);
-    }
-    break;
-    case 40: //down
-    {
-        let tempArray = render(moves.down(board));  
-        board = tempArray;
-        renderUpdate(board);
-        console.log(board);
+            console.log(board);
+        }
+        break;
+        case 40: //down
+        {
+            let tempArray = render(moves.down(board));  
+            board = tempArray;
+            renderUpdate(board);
+            console.log(board);
 
 
-    }
-            break;
-    }
+        }
+                break;
+        }
 };
 
 init();
