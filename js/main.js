@@ -211,6 +211,7 @@ document.onkeydown = function(e) {
                 renderUpdate(board);
             }
             else return;
+            
         }
         break;
         case 39: //right
