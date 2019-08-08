@@ -243,7 +243,25 @@ arr.forEach(function(rowArr){
 };
 
 //check for lose
-
+function loseCheck(arr){
+  arr.forEach(function(rowArr){  
+    rowArr.forEach(function(isZero){
+      if ( isZero === 0 ){
+        return
+      }
+      else {
+        let upCheck = JSON.stringify(moves.up(board))
+        let downCheck = JSON.stringify(moves.down(board))
+        let leftCheck = JSON.stringify(moves.left(board))
+        let rightCheck = JSON.stringify(moves.right(board))
+        if ( upCheck == downCheck && leftCheck == rightCheck){
+        alert('YOU LOSE!!!');
+      }
+      else return;
+    }
+  });
+  });
+}
 
 
 
