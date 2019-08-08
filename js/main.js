@@ -47,7 +47,7 @@ const moves = {
     return boardArr;
   }
 };
-
+var score = 0;
 var board = [
   [0, 0, 0, 0], //Row 1 idx 0
   [0, 0, 0, 0], //Row 2 idx 1
@@ -179,23 +179,26 @@ document.onkeydown = function(e) {
       {
         render(moves.left(board));
         winCheck(board);
+        loseCheck(board);
         renderUpdate(board);
       }
       break;
-    case 38: //up
+      case 38: //up
       {
         let tempArray = render(moves.up(board));
         winCheck(board);
         board = Array.from(tempArray);
         if (sentryArray !== board) {
+          loseCheck(board);
           renderUpdate(board);
         } else return;
       }
       break;
-    case 39: //right
+      case 39: //right
       {
         render(moves.right(board));
         winCheck(board);
+        loseCheck(board);
         renderUpdate(board);
         console.log(board);
       }
@@ -205,6 +208,7 @@ document.onkeydown = function(e) {
         let tempArray = render(moves.down(board));
         winCheck(board);
         board = tempArray;
+        loseCheck(board);
         renderUpdate(board);
       }
       break;
@@ -224,6 +228,24 @@ arr.forEach(function(rowArr){
 };
 
 //check for lose
+function loseCheck(arr){
+  arr.forEach(function(rowArr){  
+    rowArr.forEach(function(isZero){
+      if ( isZero === 0 ){
+        return
+      }
+      else{
+      //function to check if moves are possible
+      // if (function that checks possible moves === 0) {
+      //   alert('YOU LOSE!!!');
+      // }
+    }
+    });
+  });
+  };
 
+
+
+  //score counter
 init();
 
