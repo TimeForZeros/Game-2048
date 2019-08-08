@@ -178,12 +178,14 @@ document.onkeydown = function(e) {
     case 37: //left
       {
         render(moves.left(board));
+        winCheck(board);
         renderUpdate(board);
       }
       break;
     case 38: //up
       {
         let tempArray = render(moves.up(board));
+        winCheck(board);
         board = Array.from(tempArray);
         if (sentryArray !== board) {
           renderUpdate(board);
@@ -193,19 +195,35 @@ document.onkeydown = function(e) {
     case 39: //right
       {
         render(moves.right(board));
+        winCheck(board);
         renderUpdate(board);
         console.log(board);
       }
       break;
-    case 40: //down
+      case 40: //down
       {
         let tempArray = render(moves.down(board));
+        winCheck(board);
         board = tempArray;
         renderUpdate(board);
       }
       break;
   }
 };
+
+
+//check for win
+function winCheck(arr){
+arr.forEach(function(rowArr){  
+  rowArr.forEach(function(winNumber){
+    if (winNumber === 2048){
+      alert('YOU WIN!!!!');
+    }
+  });
+});
+};
+
+//check for lose
 
 init();
 
