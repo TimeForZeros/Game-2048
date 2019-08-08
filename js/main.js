@@ -1,238 +1,211 @@
 const colors = {
-    '0'   : 'rgb(239, 244, 250)',
-    '2'   : '#09B5A5',
-    '4'   : '#0994BA',
-    '8'   : '#0A69C4',
-    '16'  : '#0027A6',
-    '32'  : '#0C0680',
-    '64'  : '#200159',
-    '128' : '#6C2CDE',
-    '256' : '#A82EE8',
-    '512' : '#C934D1',
-    '1024': '#B02371',
-    '2048': '#962425'
-}
+  "0": "rgb(239, 244, 250)",
+  "2": "#09B5A5",
+  "4": "#0994BA",
+  "8": "#0A69C4",
+  "16": "#0027A6",
+  "32": "#0C0680",
+  "64": "#200159",
+  "128": "#6C2CDE",
+  "256": "#A82EE8",
+  "512": "#C934D1",
+  "1024": "#B02371",
+  "2048": "#962425"
+};
 
 const moves = {
-    left: function shiftLeft(boardArr) {
-        boardArr.forEach(function (arr, idx)
-        { boardArr[idx] = leftMove(arr);
-            return  boardArr[idx];
-        });
-        return boardArr;
-    },
-    right: function shiftRight(boardArr) {
-        boardArr.forEach(function (arr, idx)
-        { boardArr[idx] = rightMove(arr);
-            return  boardArr[idx];
-        });
-        return boardArr;
-    },
-    up: function shiftUp(boardArr) {
-        boardArr = colConverter(boardArr);
-            boardArr.forEach(function (arr, idx)
-            { boardArr[idx] = leftMove(arr);
-                return  boardArr[idx];
-            });
-            boardArr = colConverter(boardArr);
-            return boardArr;
-
-    },
-    down: function shiftDown(boardArr) {
-            boardArr = colConverter(boardArr);
-            boardArr.forEach(function (arr, idx)
-            { boardArr[idx] = rightMove(arr);
-                return  boardArr[idx];
-            });
-            boardArr = colConverter(boardArr);
-            return boardArr;
-    }
-}
+  left: function shiftLeft(boardArr) {
+    boardArr.forEach(function(arr, idx) {
+      boardArr[idx] = leftMove(arr);
+      return boardArr[idx];
+    });
+    return boardArr;
+  },
+  right: function shiftRight(boardArr) {
+    boardArr.forEach(function(arr, idx) {
+      boardArr[idx] = rightMove(arr);
+      return boardArr[idx];
+    });
+    return boardArr;
+  },
+  up: function shiftUp(boardArr) {
+    boardArr = colConverter(boardArr);
+    boardArr.forEach(function(arr, idx) {
+      boardArr[idx] = leftMove(arr);
+      return boardArr[idx];
+    });
+    boardArr = colConverter(boardArr);
+    return boardArr;
+  },
+  down: function shiftDown(boardArr) {
+    boardArr = colConverter(boardArr);
+    boardArr.forEach(function(arr, idx) {
+      boardArr[idx] = rightMove(arr);
+      return boardArr[idx];
+    });
+    boardArr = colConverter(boardArr);
+    return boardArr;
+  }
+};
 
 var board = [
-    [0, 0, 0, 0],   //Row 1 idx 0
-    [0, 0, 0, 0],   //Row 2 idx 1
-    [0, 0, 0, 0],   //Row 3 idx 2
-    [0, 0, 0, 0]    //Row 4 idx 3
+  [0, 0, 0, 0], //Row 1 idx 0
+  [0, 0, 0, 0], //Row 2 idx 1
+  [0, 0, 0, 0], //Row 3 idx 2
+  [0, 0, 0, 0] //Row 4 idx 3
 ];
 
 //step 1. returns array of nonzeros
 function reduceArr(arr) {
-    function nonZeroFind(nonZero) {
-       return nonZero > 0;
-    }
-   return arr.filter(nonZeroFind);
+  function nonZeroFind(nonZero) {
+    return nonZero > 0;
+  }
+  return arr.filter(nonZeroFind);
 }
 
 //step 2. combines like values
 function combineNums(arr) {
-     arr.forEach(function(num, idx) {
-         if (arr[(idx+1)] == arr[idx]){
-             arr[idx] *= 2;
-             arr.splice((idx+1), 1);
-             return arr[idx];
-         } 
-         else {
-             return;
-         }
-     });
-    
-    return arr;
-}
+  arr.forEach(function(num, idx) {
+    if (arr[idx + 1] == arr[idx]) {
+      arr[idx] *= 2;
+      arr.splice(idx + 1, 1);
+      return arr[idx];
+    } else {
+      return;
+    }
+  });
 
+  return arr;
+}
 
 //step 3. returns a 4-length array
 function fillArr(arr) {
-    for ( arr.length;   arr.length < 4;) {
-        arr.push(0);
-    }
-    return arr;
+  for (arr.length; arr.length < 4; ) {
+    arr.push(0);
+  }
+  return arr;
 }
 
 //alt step (right shift)
 function rightMove(arr) {
-    var flip = fillArr(combineNums(reduceArr(arr.reverse())));
-    return flip.reverse();
+  var flip = fillArr(combineNums(reduceArr(arr.reverse())));
+  return flip.reverse();
 }
 
-
-
 //Moves
-function leftMove(arr) { 
- return fillArr(combineNums(reduceArr(arr)));
+function leftMove(arr) {
+  return fillArr(combineNums(reduceArr(arr)));
 }
 
 //updated Col Converter
 
 function colConverter(arr) {
-var transposedArr = [
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0]];
-arr.forEach(function(rowArr, rowIdx) {
+  var transposedArr = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+  arr.forEach(function(rowArr, rowIdx) {
     rowArr.forEach(function(val, colIdx) {
-        transposedArr[colIdx].splice(rowIdx, 1, val);
-        return transposedArr;
+      transposedArr[colIdx].splice(rowIdx, 1, val);
+      return transposedArr;
     });
     return transposedArr;
-});
-return transposedArr;
+  });
+  return transposedArr;
 }
-
 
 function init() {
-    render(board);
-    spawnInit(board);
+  render(board);
+  spawnInit(board);
 }
-
-
-
 
 //creating the render function
 
 function render(arr) {
-    //function that goes through the board array rows
-    arr.forEach(function(colArr, rowIdx) {
-        //function that goes through the column index of the row arrays
-        colArr.forEach(function(cell, colIdx){
-            let tile = document.getElementById(`c${colIdx}r${rowIdx}`);
-            tile.style.backgroundColor = colors[cell.toString()];
-            
-        });
+  //function that goes through the board array rows
+  arr.forEach(function(colArr, rowIdx) {
+    //function that goes through the column index of the row arrays
+    colArr.forEach(function(cell, colIdx) {
+      let tile = document.getElementById(`c${colIdx}r${rowIdx}`);
+      tile.style.backgroundColor = colors[cell.toString()];
     });
-    return arr;
+  });
+  return arr;
 }
-
-
 
 //document.querySelector('.grid').addEventListener('click', handleClick);
 
 function randomNum() {
-    return (Math.ceil(Math.random() * 4) - 1);
+  return Math.floor(Math.random() * 4);
 }
 
 function renderUpdate() {
+  let col = randomNum();
+  let row = randomNum();
+  let updateNum = null;
+  let tileUpdate = document.getElementById(`c${col}r${row}`);
+
+  if (board[row][col] === 0) {
+    board[row][col];
+    if (randomNum() > 2) {
+      board[row][col] = 4;
+    } else {
+      board[row][col] = 2;
+    }
+  } else {
+    renderUpdate(board);
+  }
+  updateNum = board[row][col];
+  return (tileUpdate.style.backgroundColor = colors[updateNum.toString()]);
+}
+
+function spawnInit(arr) {
+  for (var i = 0; i < 2; ) {
     let col = randomNum();
     let row = randomNum();
     let updateNum = null;
     let tileUpdate = document.getElementById(`c${col}r${row}`);
-
-    if (board[row][col] === 0){
-    board[row][col]
-    if (randomNum() > 2){
-        board[row][col] = 4;
+    if (board[row][col] === 0) {
+      board[row][col] = 2;
+      updateNum = board[row][col];
+      i++;
+      tileUpdate.style.backgroundColor = colors[updateNum.toString()];
     }
-    else {
-        board[row][col] = 2;
-    }
-    }
-    else {
-    renderUpdate(board);
-    }
-    updateNum = board[row][col];
-    return tileUpdate.style.backgroundColor = colors[updateNum.toString()];
+  }
+  return arr;
 }
-
-function spawnInit (arr) {
-    for (var i = 0; i < 2;) {
-        let col = randomNum();
-        let row = randomNum();
-        let updateNum = null;
-        let tileUpdate = document.getElementById(`c${col}r${row}`);
-    if (board[row][col] === 0){
-        board[row][col] = 2;
-        updateNum = board[row][col];
-        i++;
-        tileUpdate.style.backgroundColor = colors[updateNum.toString()];
-        }
-    }
-    return arr;
-}
-
 
 document.onkeydown = function(e) {
-    const sentryArray = Array.from(board);
-    switch (e.keyCode) {
-        case 37: //left
-        {      
+  const sentryArray = Array.from(board);
+  switch (e.keyCode) {
+    case 37: //left
+      {
         render(moves.left(board));
         renderUpdate(board);
-        console.log(board);
-        }
-        break;
-        case 38: //up
-        {   
-            let tempArray = render(moves.up(board));  
-            board = Array.from(tempArray); 
-            if (sentryArray !== board) {
-                renderUpdate(board);
-            }
-            else return;
-            
-        }
-        break;
-        case 39: //right
-        {
+      }
+      break;
+    case 38: //up
+      {
+        let tempArray = render(moves.up(board));
+        board = Array.from(tempArray);
+        if (sentryArray !== board) {
+          renderUpdate(board);
+        } else return;
+      }
+      break;
+    case 39: //right
+      {
         render(moves.right(board));
         renderUpdate(board);
-            console.log(board);
-        }
-        break;
-        case 40: //down
-        {
-            let tempArray = render(moves.down(board));  
-            board = tempArray;
-            renderUpdate(board);
-            console.log(board);
-
-
-        }
-                break;
-        }
+        console.log(board);
+      }
+      break;
+    case 40: //down
+      {
+        let tempArray = render(moves.down(board));
+        board = tempArray;
+        renderUpdate(board);
+      }
+      break;
+  }
 };
 
 init();
-//I doubt you'll ever see this, but you're one of the most important people in my life and I care about you soo much, Kendira!
 
-console.log('Kendira is a butt!');
