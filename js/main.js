@@ -187,58 +187,22 @@ document.onkeydown = function(e) {
   switch (e.keyCode) {
     case 37: //left
       {
-        const sentryArray = JSON.stringify(board);
-        let tempArray = render(moves.left(board));
-        winCheck(tempArray);
-        board = Array.from(tempArray);
-        const isSame = JSON.stringify(board);
-        console.log(isSame);
-        if (sentryArray !== isSame) {
-          loseCheck(board);
-          renderUpdate(board);
-        } else return;
+        leftHandle(board);
       }
       break;
       case 38: //up
       {
-        const sentryArray = JSON.stringify(board);
-        let tempArray = render(moves.up(board));
-        winCheck(tempArray);
-        board = Array.from(tempArray);
-        const isSame = JSON.stringify(board);
-        console.log(isSame);
-        if (sentryArray !== isSame) {
-          loseCheck(board);
-          renderUpdate(board);
-        } else return;
+        upHandle(board);
       }
       break;
       case 39: //right
       {
-        const sentryArray = JSON.stringify(board);
-        let tempArray = render(moves.right(board));
-        winCheck(tempArray);
-        board = Array.from(tempArray);
-        const isSame = JSON.stringify(board);
-        console.log(isSame);
-        if (sentryArray !== isSame) {
-          loseCheck(board);
-          renderUpdate(board);
-        } else return;
+       rightHandle(board);
       }
       break;
       case 40: //down
       {
-        const sentryArray = JSON.stringify(board);
-        let tempArray = render(moves.down(board));
-        winCheck(tempArray);
-        board = Array.from(tempArray);
-        const isSame = JSON.stringify(board);
-        console.log(isSame);
-        if (sentryArray !== isSame) {
-          loseCheck(board);
-          renderUpdate(board);
-        } else return;
+        downHandle(board);
       }
       break;
   }
@@ -320,21 +284,18 @@ function loseCheck(arr){
       if ( isZero === 0 ){
         return
       }
-      else {
-        let upCheck = JSON.stringify(moves.up(board))
-        let downCheck = JSON.stringify(moves.down(board))
-        let leftCheck = JSON.stringify(moves.left(board))
-        let rightCheck = JSON.stringify(moves.right(board))
-        if ( upCheck == downCheck && leftCheck == rightCheck){
-        alert('YOU LOSE!!!');
-      }
-      else return;
+      else{
+
+
     }
+    });
   });
-  });
-}
+  };
 
 
 
   //score counter
 init();
+
+console.log('Kendira is still a butt');
+
