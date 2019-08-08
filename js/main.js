@@ -196,7 +196,7 @@ document.onkeydown = function(e) {
       case 38: //up
       {
         let tempArray = render(moves.up(board));
-        winCheck(board);
+        winCheck(tempArray);
         board = Array.from(tempArray);
         if (sentryArray !== board) {
           loseCheck(board);
