@@ -59,6 +59,8 @@ var board = [
 ];
 let scoreDisplay = document.getElementById('score');
 
+
+
 //step 1. returns array of nonzeros
 function reduceArr(arr) {
   function nonZeroFind(nonZero) {
@@ -123,8 +125,6 @@ function init() {
   spawnInit(board);
 }
 
-//Kendi, if you find this, you're just wasting your time now
-
 //creating the render function
 
 function render(arr) {
@@ -165,8 +165,6 @@ function renderUpdate() {
   return (tileUpdate.style.backgroundColor = colors[updateNum.toString()]);
 }
 
-//but seriously, Kendi, Stahp
-
 function spawnInit(arr) {
   for (var i = 0; i < 2; ) {
     let col = randomNum();
@@ -184,86 +182,48 @@ function spawnInit(arr) {
 }
 Array.from
 document.onkeydown = function(e) {
+  const sentryArray = JSON.stringify(board);
+  console.log(sentryArray)
   switch (e.keyCode) {
     case 37: //left
       {
-        leftHandle(board);
+        render(moves.left(board));
+        winCheck(board);
+        loseCheck(board);
+        renderUpdate(board);
       }
       break;
       case 38: //up
       {
-        upHandle(board);
+        let tempArray = render(moves.up(board));
+        winCheck(tempArray);
+        board = Array.from(tempArray);
+        if (sentryArray !== board) {
+          loseCheck(board);
+          renderUpdate(board);
+        } else return;
       }
       break;
       case 39: //right
       {
-       rightHandle(board);
+        render(moves.right(board));
+        winCheck(board);
+        loseCheck(board);
+        renderUpdate(board);
+        console.log(board);
       }
       break;
       case 40: //down
       {
-        downHandle(board);
+        let tempArray = render(moves.down(board));
+        winCheck(board);
+        board = tempArray;
+        loseCheck(board);
+        renderUpdate(board);
       }
       break;
   }
 };
-
-
-//handle events
-
-function leftHandle(board) {
-  const sentryArray = JSON.stringify(board);
-  let tempArray = render(moves.left(board));
-  winCheck(tempArray);
-  board = Array.from(tempArray);
-  const isSame = JSON.stringify(board);
-  console.log(isSame);
-  if (sentryArray !== isSame) {
-    loseCheck(board);
-    renderUpdate(board);
-  } else return;
-
-
-}
-function upHandle(board){
-  const sentryArray = JSON.stringify(board);
-  let tempArray = render(moves.up(board));
-  winCheck(tempArray);
-  board = Array.from(tempArray);
-  const isSame = JSON.stringify(board);
-  console.log(isSame);
-  if (sentryArray !== isSame) {
-    loseCheck(board);
-    renderUpdate(board);
-  } else return;
-
-}
-function downHandle(board){
-  const sentryArray = JSON.stringify(board);
-  let tempArray = render(moves.down(board));
-  winCheck(tempArray);
-  board = Array.from(tempArray);
-  const isSame = JSON.stringify(board);
-  console.log(isSame);
-  if (sentryArray !== isSame) {
-    loseCheck(board);
-    renderUpdate(board);
-  } else return;
-
-}
-function rightHandle(board){
-  const sentryArray = JSON.stringify(board);
-  let tempArray = render(moves.right(board));
-  winCheck(tempArray);
-  board = Array.from(tempArray);
-  const isSame = JSON.stringify(board);
-  console.log(isSame);
-  if (sentryArray !== isSame) {
-    loseCheck(board);
-    renderUpdate(board);
-  } else return;
-
-}
 
 
 //check for win
@@ -285,8 +245,10 @@ function loseCheck(arr){
         return
       }
       else{
-
-
+      //function to check if moves are possible
+      // if (function that checks possible moves === 0) {
+      //   alert('YOU LOSE!!!');
+      // }
     }
     });
   });
@@ -296,6 +258,4 @@ function loseCheck(arr){
 
   //score counter
 init();
-
-console.log('Kendira is still a butt');
 
