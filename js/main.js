@@ -47,6 +47,9 @@ const moves = {
     return boardArr;
   }
 };
+
+
+
 var score = 0;
 var board = [
   [0, 0, 0, 0], //Row 1 idx 0
@@ -54,6 +57,9 @@ var board = [
   [0, 0, 0, 0], //Row 3 idx 2
   [0, 0, 0, 0] //Row 4 idx 3
 ];
+let scoreDisplay = document.getElementById('score');
+
+
 
 //step 1. returns array of nonzeros
 function reduceArr(arr) {
@@ -68,6 +74,8 @@ function combineNums(arr) {
   arr.forEach(function(num, idx) {
     if (arr[idx + 1] == arr[idx]) {
       arr[idx] *= 2;
+      score += arr[idx];
+      scoreDisplay.textContent = score;
       arr.splice(idx + 1, 1);
       return arr[idx];
     } else {
@@ -112,6 +120,7 @@ function colConverter(arr) {
 }
 
 function init() {
+  scoreDisplay.textContent = 0;
   render(board);
   spawnInit(board);
 }
@@ -171,9 +180,10 @@ function spawnInit(arr) {
   }
   return arr;
 }
-
+Array.from
 document.onkeydown = function(e) {
-  const sentryArray = Array.from(board);
+  const sentryArray = JSON.stringify(board);
+  console.log(sentryArray)
   switch (e.keyCode) {
     case 37: //left
       {

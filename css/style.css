@@ -9,7 +9,6 @@ body {
     min-width: 900px;
     grid-gap: 15px;
     color: rgb(14, 46, 78);
-
 }
 .main {
     grid-row: 1;
@@ -24,10 +23,9 @@ h2 {
      font-size: 60px;
      letter-spacing: 75px;
      width: 400px;
-     padding-left: 12.5px;
-
-     
+     padding-left: 12.5px;   
 }
+
 h3 {
     margin-top: 105px;
     grid-row: 1;
@@ -99,6 +97,7 @@ h3 {
     justify-content: flex-end;
     align-items: center;
     margin-top: -20px;
+    font-size: 30px;
 }
 .score-container {
     display: flex;
