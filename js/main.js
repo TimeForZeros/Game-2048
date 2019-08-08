@@ -190,7 +190,12 @@ document.onkeydown = function(e) {
         render(moves.left(board));
         winCheck(board);
         loseCheck(board);
-        renderUpdate(board);
+        const checker = JSON.stringify(board);
+        if (sentryArray !== checker){
+          loseCheck(board);
+          renderUpdate(board);
+        }
+        else return;
       }
       break;
       case 38: //up
@@ -238,21 +243,7 @@ arr.forEach(function(rowArr){
 };
 
 //check for lose
-function loseCheck(arr){
-  arr.forEach(function(rowArr){  
-    rowArr.forEach(function(isZero){
-      if ( isZero === 0 ){
-        return
-      }
-      else{
-      //function to check if moves are possible
-      // if (function that checks possible moves === 0) {
-      //   alert('YOU LOSE!!!');
-      // }
-    }
-    });
-  });
-  };
+
 
 
 
