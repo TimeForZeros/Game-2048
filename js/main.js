@@ -190,18 +190,13 @@ document.onkeydown = function(e) {
         render(moves.left(board));
         winCheck(board);
         loseCheck(board);
-        const checker = JSON.stringify(board);
-        if (sentryArray !== checker){
-          loseCheck(board);
-          renderUpdate(board);
-        }
-        else return;
+        renderUpdate(board);
       }
       break;
       case 38: //up
       {
         let tempArray = render(moves.up(board));
-        winCheck(board);
+        winCheck(tempArray);
         board = Array.from(tempArray);
         if (sentryArray !== board) {
           loseCheck(board);
@@ -249,19 +244,15 @@ function loseCheck(arr){
       if ( isZero === 0 ){
         return
       }
-      else {
-        let upCheck = JSON.stringify(moves.up(board))
-        let downCheck = JSON.stringify(moves.down(board))
-        let leftCheck = JSON.stringify(moves.left(board))
-        let rightCheck = JSON.stringify(moves.right(board))
-        if ( upCheck == downCheck && leftCheck == rightCheck){
-        alert('YOU LOSE!!!');
-      }
-      else return;
+      else{
+      //function to check if moves are possible
+      // if (function that checks possible moves === 0) {
+      //   alert('YOU LOSE!!!');
+      // }
     }
+    });
   });
-  });
-}
+  };
 
 
 
