@@ -48,8 +48,6 @@ const moves = {
   }
 };
 
-
-
 var score = 0;
 var board = [
   [0, 0, 0, 0], //Row 1 idx 0
@@ -57,9 +55,7 @@ var board = [
   [0, 0, 0, 0], //Row 3 idx 2
   [0, 0, 0, 0] //Row 4 idx 3
 ];
-let scoreDisplay = document.getElementById('score');
-
-
+let scoreDisplay = document.getElementById("score");
 
 //step 1. returns array of nonzeros
 function reduceArr(arr) {
@@ -86,7 +82,7 @@ function combineNums(arr) {
   return arr;
 }
 
-//step 3. returns a 4-length array
+//step 3. returns an array with a length of 4
 function fillArr(arr) {
   for (arr.length; arr.length < 4; ) {
     arr.push(0);
@@ -108,7 +104,10 @@ function leftMove(arr) {
 //updated Col Converter
 
 function colConverter(arr) {
-  var transposedArr = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+  var transposedArr = [[0, 0, 0, 0],
+                       [0, 0, 0, 0], 
+                       [0, 0, 0, 0], 
+                       [0, 0, 0, 0]];
   arr.forEach(function(rowArr, rowIdx) {
     rowArr.forEach(function(val, colIdx) {
       transposedArr[colIdx].splice(rowIdx, 1, val);
@@ -183,21 +182,23 @@ function spawnInit(arr) {
 document.onkeydown = function(e) {
   switch (e.keyCode) {
     case 37: //left
-      { const sentryArray = JSON.stringify(board);
-        let sentryCheck = '';
+      {
+        const sentryArray = JSON.stringify(board);
+        let sentryCheck = "";
         let tempArray = render(moves.left(board));
         winCheck(tempArray);
         sentryCheck = JSON.stringify(board);
         board = Array.from(tempArray);
-        if (sentryArray !== sentryCheck){
-        loseCheck(board);
-        renderUpdate(board);
-      } else return;
+        if (sentryArray !== sentryCheck) {
+          loseCheck(board);
+          renderUpdate(board);
+        } else return;
       }
       break;
-      case 38: //up
-      { const sentryArray = JSON.stringify(board);
-        let sentryCheck = '';
+    case 38: //up
+      {
+        const sentryArray = JSON.stringify(board);
+        let sentryCheck = "";
         let tempArray = render(moves.up(board));
         winCheck(tempArray);
         sentryCheck = JSON.stringify(tempArray);
@@ -206,76 +207,72 @@ document.onkeydown = function(e) {
           loseCheck(board);
           renderUpdate(board);
         } else return;
-    }
+      }
       break;
-      case 39: //right
-      { const sentryArray = JSON.stringify(board);
-        let sentryCheck = '';
+    case 39: //right
+      {
+        const sentryArray = JSON.stringify(board);
+        let sentryCheck = "";
         let tempArray = render(moves.right(board));
         winCheck(tempArray);
         sentryCheck = JSON.stringify(tempArray);
         board = Array.from(tempArray);
-        if (sentryArray !== sentryCheck){
-        loseCheck(board);
-        renderUpdate(board);
+        if (sentryArray !== sentryCheck) {
+          loseCheck(board);
+          renderUpdate(board);
+        } else return;
       }
-        else return;
-    }
-    break;
-      case 40: //down
-        {  const sentryArray = JSON.stringify(board);
-        let sentryCheck = '';
+      break;
+    case 40: //down
+      {
+        const sentryArray = JSON.stringify(board);
+        let sentryCheck = "";
         let tempArray = render(moves.down(board));
         winCheck(tempArray);
         sentryCheck = JSON.stringify(tempArray);
         board = Array.from(tempArray);
         if (sentryArray !== sentryCheck) {
-        loseCheck(board);
-        renderUpdate(board);
-        }
-        else return;
-    }
-    break;
+          loseCheck(board);
+          renderUpdate(board);
+        } else return;
+      }
+      break;
+  }
 };
-}
-
 
 //check for win
-function winCheck(arr){
-arr.forEach(function(rowArr){  
-  rowArr.forEach(function(winNumber){
-    if (winNumber === 2048){
-      alert('YOU WIN!!!!');
-    }
+function winCheck(arr) {
+  arr.forEach(function(rowArr) {
+    rowArr.forEach(function(winNumber) {
+      if (winNumber === 2048) { //Change this number to silence the haters
+        alert("YOU WIN!!!!");
+      }
+    });
   });
-});
-};
+}
 
 //check for lose
-function loseCheck(arr){
-  return
-  arr.forEach(function(rowArr){  
-    rowArr.forEach(function(isZero){
+function loseCheck(arr) {
+  return;
+  arr.forEach(function(rowArr) {
+    rowArr.forEach(function(isZero) {
       while (isZero != 0)
-      if ( isZero === 0 ){
-        return
-      }
-      else {
-        let checkBoard = Array.from(board);
-        let checkUp = JSON.stringify(moves.up(checkBoard));
-        let checkDown = JSON.stringify(moves.down(checkBoard));
-        let checkLeft = JSON.stringify(moves.left(checkBoard));
-        let checkRight = JSON.stringify(moves.right(checkBoard));
-        if (checkUp === checkDown && checkLeft === checkRight)
-        {
-          alert('You lose!');
+        if (isZero === 0) {
+          return;
+        } else {
+          let checkBoard = Array.from(board);
+          let checkUp = JSON.stringify(moves.up(checkBoard));
+          let checkDown = JSON.stringify(moves.down(checkBoard));
+          let checkLeft = JSON.stringify(moves.left(checkBoard));
+          let checkRight = JSON.stringify(moves.right(checkBoard));
+          if (checkUp === checkDown && checkLeft === checkRight) {
+            alert("You lose!");
+          } else {
+            return;
+          }
         }
-        else {
-        return;
-      }
-    }
+    });
   });
-});
 }
-  //score counter
+//score counter
 init();

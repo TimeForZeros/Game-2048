@@ -26,10 +26,10 @@ A function that pushes zero values into arrays until the array lenth is 4.
 The function by default is for a left shift, for the right shift, the array is first reversed, the function is run, and reversed the resulting arrays.
 Top and bottom shifts required more work. They required to first transpose the matrix so that the column indices become indices for row arrays and then running the left shift for the top and the right shift variant for the bottom shift. After this is done, the array is once again transposed to its original state.
 
-###Render Function
+### Render Function
 The render function and the initialized population of zeros and starting 2's involve assigning a randomly generated number to the column and row indices of the board array. For subsequent populations, the function first checks if the value of the contents of the array's indices is a zero before populating it with either a 2-valued tile or a 4-valued tile; there is a one in four chance that a 4 populates the board to add extra challenge to the game.
 
-####~On the issue of invalid moves
+#### ~On the issue of invalid moves
 To ensure that tiles aren't populated when a move does not change the board, a string generated from the board array before the move is made is compared with a string generated after the move is made. If the array strings do not match, meaning the board has changed appearance (i.e. 'moved'), an empty part of the board is populated with a 2 or 4 tile.
 
 ### Win Logic
