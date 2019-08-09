@@ -255,6 +255,7 @@ arr.forEach(function(rowArr){
 function loseCheck(arr){
   arr.forEach(function(rowArr){  
     rowArr.forEach(function(isZero){
+      while (isZero != 0)
       if ( isZero === 0 ){
         return
       }
