@@ -180,50 +180,64 @@ function spawnInit(arr) {
   }
   return arr;
 }
-Array.from
 document.onkeydown = function(e) {
-  const sentryArray = JSON.stringify(board);
-  console.log(sentryArray)
   switch (e.keyCode) {
     case 37: //left
-      {
-        render(moves.left(board));
-        winCheck(board);
+      { const sentryArray = JSON.stringify(board);
+        let sentryCheck = '';
+        let tempArray = render(moves.left(board));
+        winCheck(tempArray);
+        sentryCheck = JSON.stringify(board);
+        board = Array.from(tempArray);
+        if (sentryArray !== sentryCheck){
         loseCheck(board);
         renderUpdate(board);
+      } else return;
       }
       break;
       case 38: //up
-      {
+      { const sentryArray = JSON.stringify(board);
+        let sentryCheck = '';
         let tempArray = render(moves.up(board));
         winCheck(tempArray);
+        sentryCheck = JSON.stringify(tempArray);
         board = Array.from(tempArray);
-        if (sentryArray !== board) {
+        if (sentryArray !== sentryCheck) {
           loseCheck(board);
           renderUpdate(board);
         } else return;
-      }
+    }
       break;
       case 39: //right
-      {
-        render(moves.right(board));
-        winCheck(board);
+      { const sentryArray = JSON.stringify(board);
+        let sentryCheck = '';
+        let tempArray = render(moves.right(board));
+        winCheck(tempArray);
+        sentryCheck = JSON.stringify(tempArray);
+        board = Array.from(tempArray);
+        if (sentryArray !== sentryCheck){
         loseCheck(board);
         renderUpdate(board);
-        console.log(board);
       }
-      break;
+        else return;
+    }
+    break;
       case 40: //down
-      {
+        {  const sentryArray = JSON.stringify(board);
+        let sentryCheck = '';
         let tempArray = render(moves.down(board));
-        winCheck(board);
-        board = tempArray;
+        winCheck(tempArray);
+        sentryCheck = JSON.stringify(tempArray);
+        board = Array.from(tempArray);
+        if (sentryArray !== sentryCheck) {
         loseCheck(board);
         renderUpdate(board);
-      }
-      break;
-  }
+        }
+        else return;
+    }
+    break;
 };
+}
 
 
 //check for win
@@ -244,18 +258,22 @@ function loseCheck(arr){
       if ( isZero === 0 ){
         return
       }
-      else{
-      //function to check if moves are possible
-      // if (function that checks possible moves === 0) {
-      //   alert('YOU LOSE!!!');
-      // }
+      else {
+        let checkBoard = Array.from(board);
+        let checkUp = JSON.stringify(moves.up(checkBoard));
+        let checkDown = JSON.stringify(moves.down(checkBoard));
+        let checkLeft = JSON.stringify(moves.left(checkBoard));
+        let checkRight = JSON.stringify(moves.right(checkBoard));
+        if (checkUp === checkDown && checkLeft === checkRight)
+        {
+          alert('You lose!');
+        }
+        else {
+        return;
+      }
     }
-    });
   });
-  };
-
-
-
+});
+}
   //score counter
 init();
-
