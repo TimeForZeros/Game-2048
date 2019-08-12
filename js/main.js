@@ -244,7 +244,7 @@ document.onkeydown = function(e) {
 function winCheck(arr) {
   arr.forEach(function(rowArr) {
     rowArr.forEach(function(winNumber) {
-      if (winNumber === 2048) { //Change this number to silence the haters
+      if (winNumber === 2048) {
         alert("YOU WIN!!!!");
       }
     });
