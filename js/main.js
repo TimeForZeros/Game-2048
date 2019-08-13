@@ -250,7 +250,7 @@ document.onkeydown = function(e) {
 function winCheck(arr) {
   arr.forEach(function(rowArr) {
     rowArr.forEach(function(winNumber) {
-      if (winNumber === 2048) {
+      if (winNumber === 512) {
         alert("YOU WIN!! Kendira is still a scrub, though");
         console.log('Kendira is a SUPER scrub');
       }
