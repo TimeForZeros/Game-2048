@@ -81,6 +81,10 @@ function combineNums(arr) {
 
   return arr;
 }
+//If you find this one, Kendi, I dunno, man! I dunno what to say! 
+//Now that I know you can probs find these, I gotta be careful with what I say, nawmsayen? lest you get all up into yourself.
+//but yeah, you know
+
 
 //step 3. returns an array with a length of 4
 function fillArr(arr) {
@@ -240,12 +244,15 @@ document.onkeydown = function(e) {
   }
 };
 
+//it's not infatuation....
+
 //check for win
 function winCheck(arr) {
   arr.forEach(function(rowArr) {
     rowArr.forEach(function(winNumber) {
       if (winNumber === 2048) {
-        alert("YOU WIN!!!!");
+        alert("YOU WIN!! Kendira is still a scrub, though");
+        console.log('Kendira is a SUPER scrub');
       }
     });
   });
@@ -276,3 +283,5 @@ function loseCheck(arr) {
 }
 //score counter
 init();
+
+console.log('Kendira is a scrub.');
