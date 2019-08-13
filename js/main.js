@@ -244,7 +244,7 @@ document.onkeydown = function(e) {
   }
 };
 
-//it's not infatuation....
+//probs not infatiuation tho
 
 //check for win
 function winCheck(arr) {
