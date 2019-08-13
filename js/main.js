@@ -244,7 +244,7 @@ document.onkeydown = function(e) {
   }
 };
 
-//probs not infatiuation tho
+//It's clear it's not infatuation though
 
 //check for win
 function winCheck(arr) {
@@ -257,6 +257,9 @@ function winCheck(arr) {
     });
   });
 }
+
+//you're alright
+
 
 //check for lose
 function loseCheck(arr) {
