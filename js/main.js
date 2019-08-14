@@ -290,7 +290,7 @@ init();
 
 var kendi = prompt('Are you procrastinating?');
 
-if (kendi.toLowerCase !== 'no')
+if (kendi !== 'no')
 {
   alert('Maybe do your like 4 assignments. Two are due tomorrow, you know.');
   alert("You know what? whatever. Have fun!");
