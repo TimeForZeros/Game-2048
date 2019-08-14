@@ -121,7 +121,7 @@ function colConverter(arr) {
   });
   return transposedArr;
 }
-
+//ugh!!! get it out!!!
 function init() {
   scoreDisplay.textContent = 0;
   render(board);
@@ -248,9 +248,10 @@ document.onkeydown = function(e) {
 
 //check for win
 function winCheck(arr) {
+ return
   arr.forEach(function(rowArr) {
     rowArr.forEach(function(winNumber) {
-      if (winNumber === 512) {
+      if (winNumber === 2048) {
         alert("YOU WIN!! Kendira is still a scrub, though");
         console.log('Kendira is a SUPER scrub');
       }
@@ -286,5 +287,20 @@ function loseCheck(arr) {
 }
 //score counter
 init();
+
+var kendi = prompt('Are you procrastinating?');
+
+if (kendi.toLowerCase !== 'no')
+{
+  alert('Maybe do your like 4 assignments. Two are due tomorrow, you know.');
+  alert("You know what? whatever. Have fun!");
+}
+else {
+  var doubleKendi = prompt('Really?');
+  if (doubleKendi === 'yes'){
+  alert('Have fun, scrub!');
+  }
+  else alert("You know what? whatever. Have fun!");
+}
 
 console.log('Kendira is a scrub.');
