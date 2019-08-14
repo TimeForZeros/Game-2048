@@ -167,6 +167,7 @@ function renderUpdate() {
   updateNum = board[row][col];
   return (tileUpdate.style.backgroundColor = colors[updateNum.toString()]);
 }
+//I'm so lame lol
 
 function spawnInit(arr) {
   for (var i = 0; i < 2; ) {
@@ -288,19 +289,19 @@ function loseCheck(arr) {
 //score counter
 init();
 
-var kendi = prompt('Are you procrastinating?');
+//var kendi = prompt('Are you procrastinating?');
 
-if (kendi !== 'no')
-{
-  alert('Maybe do your like 4 assignments. Two are due tomorrow, you know.');
-  alert("You know what? whatever. Have fun!");
-}
-else {
-  var doubleKendi = prompt('Really?');
-  if (doubleKendi === 'yes'){
-  alert('Have fun, scrub!');
-  }
-  else alert("You know what? whatever. Have fun!");
-}
+// if (kendi !== 'no')
+// {
+//   alert('Maybe do your like 4 assignments. Two are due tomorrow, you know.');
+//   alert("You know what? whatever. Have fun!");
+// }
+// else {
+//   var doubleKendi = prompt('Really?');
+//   if (doubleKendi === 'yes'){
+//   alert('Have fun, scrub!');
+//   }
+//   else alert("You know what? whatever. Have fun!");
+// }
 
 console.log('Kendira is a scrub.');
