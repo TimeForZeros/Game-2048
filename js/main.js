@@ -248,7 +248,6 @@ function winCheck(arr) {
     rowArr.forEach(function(winNumber) {
       if (winNumber === 2048) {
         alert("YOU WIN!!");
-        console.log('Kendira is a SUPER scrub');
       }
     });
   });
