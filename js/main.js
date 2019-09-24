@@ -81,10 +81,6 @@ function combineNums(arr) {
 
   return arr;
 }
-//If you find this one, Kendi, I dunno, man! I dunno what to say! 
-//Now that I know you can probs find these, I gotta be careful with what I say, nawmsayen? lest you get all up into yourself.
-//but yeah, you know
-
 
 //step 3. returns an array with a length of 4
 function fillArr(arr) {
@@ -167,7 +163,6 @@ function renderUpdate() {
   updateNum = board[row][col];
   return (tileUpdate.style.backgroundColor = colors[updateNum.toString()]);
 }
-//I'm so lame lol
 
 function spawnInit(arr) {
   for (var i = 0; i < 2; ) {
@@ -245,7 +240,6 @@ document.onkeydown = function(e) {
   }
 };
 
-//It's clear it's not infatuation though
 
 //check for win
 function winCheck(arr) {
@@ -253,14 +247,12 @@ function winCheck(arr) {
   arr.forEach(function(rowArr) {
     rowArr.forEach(function(winNumber) {
       if (winNumber === 2048) {
-        alert("YOU WIN!! Kendira is still a scrub, though");
+        alert("YOU WIN!!");
         console.log('Kendira is a SUPER scrub');
       }
     });
   });
 }
-
-//you're alright
 
 
 //check for lose
@@ -289,19 +281,4 @@ function loseCheck(arr) {
 //score counter
 init();
 
-//var kendi = prompt('Are you procrastinating?');
 
-// if (kendi !== 'no')
-// {
-//   alert('Maybe do your like 4 assignments. Two are due tomorrow, you know.');
-//   alert("You know what? whatever. Have fun!");
-// }
-// else {
-//   var doubleKendi = prompt('Really?');
-//   if (doubleKendi === 'yes'){
-//   alert('Have fun, scrub!');
-//   }
-//   else alert("You know what? whatever. Have fun!");
-// }
-
-console.log('Kendira is a scrub.');
