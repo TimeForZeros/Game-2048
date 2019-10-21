@@ -2,6 +2,7 @@
 ![Imgur](https://i.imgur.com/qRSECyn.png)
 ## What is 2048? 
 2048 is a tile-sliding game where the objective is to merge like-colored tiles by using the arrow keys to slide the tiles in their respecive direction. As colored tiles merge, they'll change color away from green hues that increment analogously to warmer hues. The objective is to merge tiles that result in a red tile; the 2048 analog to my version. As one merges tiles, they will gain points relative to the value of sum of the two merged tiles (e.g. two green tiles worth two points merge to add 4 points to the score, two blue merge to add 8 etc...)
+[Link to App](https://timeforzeros.github.io/Game-2048/)
 
 ## Development
 
